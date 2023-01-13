@@ -4,8 +4,6 @@ on:
     branches:
       - master
 
-permissions: read-all|write-all
-
 jobs:
   publish-tauri:
     strategy:
