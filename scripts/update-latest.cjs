@@ -12,19 +12,27 @@ const content = {
   platforms: {
     'darwin-x86_64': {
       signature: '',
-      url: `${pjson.repository.url}/releases/download/${pjson.name}-v${pjson.version}/${pjson.name}.app.tar.gz`,
+      url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
+        pjson.version
+      }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz`,
     },
     'darwin-aarch64': {
       signature: '',
-      url: `${pjson.repository.url}/releases/download/${pjson.name}-v${pjson.version}/${pjson.name}.app.tar.gz`,
+      url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
+        pjson.version
+      }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz`,
     },
     'linux-x86_64': {
       signature: '',
-      url: `${pjson.repository.url}/releases/download/${pjson.name}-v${pjson.version}/${pjson.name}.app.tar.gz`,
+      url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
+        pjson.version
+      }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz`,
     },
     'windows-x86_64': {
       signature: '',
-      url: `${pjson.repository.url}/releases/download/${pjson.name}-v${pjson.version}/${pjson.name}_${pjson.version}_x64_en-US.msi`,
+      url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
+        pjson.version
+      }/${pjson.displayName.replace(/\s+/g, '.')}_${pjson.version}_x64_en-US.msi`,
     },
   },
 }
