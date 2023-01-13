@@ -1,45 +1,43 @@
-name: Release
+name: 'Publish'
 on:
   push:
-    tags:
-      - 'v*'
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  release:
+  publish-tauri:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-10.15, ubuntu-20.04, windows-latest]
+        platform: [macos-latest, ubuntu-20.04, windows-latest]
+
     runs-on: ${{ matrix.platform }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Node.js setup
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - name: setup node
+        uses: actions/setup-node@v1
         with:
-          node-version: 18
-
-      - name: Rust setup
+          node-version: 16
+      - name: install Rust stable
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-
-      - name: Install dependencies (ubuntu only)
+      - name: install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
-
-      - run: yarn install
-
-      - name: Build and release
-        uses: tauri-apps/tauri-action@v0
+          sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
+      - name: install app dependencies and build it
+        env:
+          TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
+        run: yarn && yarn build
+      - uses: tauri-apps/tauri-action@v0
         env:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: tauri-updater-test-v__VERSION__
+          tagName: tauri-updater-test-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
           releaseName: Tauri Updater Test v__VERSION__
+          releaseBody: ''
           releaseDraft: true
+          prerelease: false
