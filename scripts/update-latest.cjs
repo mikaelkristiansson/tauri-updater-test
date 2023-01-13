@@ -11,25 +11,33 @@ const content = {
   pub_date: new Date().toISOString(),
   platforms: {
     'darwin-x86_64': {
-      signature: '',
+      signature: `${pjson.repository.url}/releases/download/${pjson.name}-v${
+        pjson.version
+      }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz.sig`,
       url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
         pjson.version
       }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz`,
     },
     'darwin-aarch64': {
-      signature: '',
+      signature: `${pjson.repository.url}/releases/download/${pjson.name}-v${
+        pjson.version
+      }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz.sig`,
       url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
         pjson.version
       }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz`,
     },
     'linux-x86_64': {
-      signature: '',
+      signature: `${pjson.repository.url}/releases/download/${pjson.name}-v${
+        pjson.version
+      }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz.sig`,
       url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
         pjson.version
       }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz`,
     },
     'windows-x86_64': {
-      signature: '',
+      signature: `${pjson.repository.url}/releases/download/${pjson.name}-v${
+        pjson.version
+      }/${pjson.displayName.replace(/\s+/g, '.')}_${pjson.version}_x64_en-US.msi.zip.sig`,
       url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
         pjson.version
       }/${pjson.displayName.replace(/\s+/g, '.')}_${pjson.version}_x64_en-US.msi`,
