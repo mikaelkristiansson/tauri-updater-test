@@ -40,6 +40,6 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: v__VERSION__
-          releaseName: v__VERSION__
+          tagName: tauri-updater-test-v__VERSION__
+          releaseName: Tauri Updater Test v__VERSION__
           releaseDraft: true
