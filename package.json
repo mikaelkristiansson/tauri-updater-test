@@ -1,6 +1,6 @@
 {
   "name": "tauri-updater-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Tauri Updater Test",
   "private": true,
   "type": "module",

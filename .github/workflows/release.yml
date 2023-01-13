@@ -39,7 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: tauri-updater-test-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
-          releaseName: Tauri Updater Test v__VERSION__
+          releaseName: tauri-updater-test-v__VERSION__
           releaseBody: ''
           releaseDraft: true
           prerelease: false
