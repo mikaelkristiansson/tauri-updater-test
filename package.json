@@ -1,6 +1,12 @@
 {
+  "name": "tauri-updater-test",
+  "version": "1.0.0",
+  "displayName": "Tauri Updater Test",
   "private": true,
   "type": "module",
+  "repository": {
+    "url": "https://github.com/mikaelkristiansson/tauri-updater-test"
+  },
   "scripts": {
     "tauri": "tauri",
     "dev": "tauri dev",
