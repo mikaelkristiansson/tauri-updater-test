@@ -12,7 +12,14 @@ async function creatLatest() {
       pjson.version
     }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz.sig`
   )
-  const body = await response.text()
+
+  const windowsResponse = await fetch(
+    `${pjson.repository.url}/releases/download/${pjson.name}-v${
+      pjson.version
+    }/${pjson.displayName.replace(/\s+/g, '.')}_${pjson.version}_x64_en-US.msi.zip.sig`
+  )
+  const unixSig = await response.text()
+  const windowSig = await windowsResponse.text()
 
   const content = {
     version: 'v' + pjson.version,
@@ -20,25 +27,25 @@ async function creatLatest() {
     pub_date: new Date().toISOString(),
     platforms: {
       'darwin-x86_64': {
-        signature: body,
+        signature: unixSig,
         url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
           pjson.version
         }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz`,
       },
       'darwin-aarch64': {
-        signature: body,
+        signature: unixSig,
         url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
           pjson.version
         }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz`,
       },
       'linux-x86_64': {
-        signature: body,
+        signature: unixSig,
         url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
           pjson.version
         }/${pjson.displayName.replace(/\s+/g, '.')}.app.tar.gz`,
       },
       'windows-x86_64': {
-        signature: body,
+        signature: windowSig,
         url: `${pjson.repository.url}/releases/download/${pjson.name}-v${
           pjson.version
         }/${pjson.displayName.replace(/\s+/g, '.')}_${pjson.version}_x64_en-US.msi`,
